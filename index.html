@@ -5,20 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Will You Be My Valentine? 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      overflow: auto;
-    }
+   body {
+  margin: 0;
+  font-family:
+    'Poppins',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  overflow-y: auto;
+}
 
     .card {
       background: white;
@@ -37,7 +42,12 @@
       color: #e63946;
     }
 
-    p { color: #444; }
+   p {
+  color: #444;
+  line-height: 1.8;
+  font-size: 16px;
+  font-family: 'Playfair Display', serif;
+}
 
     .btn {
       display: block;
@@ -100,13 +110,13 @@
 <body>
 
   <!-- BACKGROUND MUSIC -->
-  <audio id="bgMusic" loop>
-    <source src="love.mp3" type="audio/mpeg">
-  </audio>
+ <audio id="bgMusic" loop preload="auto">
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
 
   <!-- PAGE 1 -->
   <div class="card" id="page1">
-    <h1>Hey {zainii} 💕</h1>
+    <h1>Hey zainii 💕</h1>
     <p>I made something special just for you…</p>
     <button class="btn" onclick="startLove()">Start 💌</button>
   </div>
@@ -136,7 +146,7 @@
 
   <!-- FINAL PAGE -->
   <div class="card hidden" id="page5">
-    <h1>{my love Zainuuu} 💘</h1>
+    <h1>my love Zainuuu💘</h1>
     <p>From laughing at little things to loving your cats like my own…</p>
     <p>You mean more to me than I can explain.</p>
     <h2>Will you be my Valentine? 🌹</h2>
@@ -148,10 +158,14 @@
   <script>
     const noBtn = document.getElementById('noBtn');
 
-    function startLove() {
-      document.getElementById('bgMusic').play();
-      nextPage(1);
-    }
+   function startLove() {
+  const music = document.getElementById('bgMusic');
+  music.volume = 0.6;
+  music.play().catch(() => {
+    console.log("Music will play after interaction");
+  });
+  nextPage(1);
+}
 
     function nextPage(current) {
       document.getElementById('page' + current).classList.add('hidden');
