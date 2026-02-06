@@ -9,9 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -87,9 +85,7 @@
       margin-top: 15px;
     }
 
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
 
     footer {
       margin-top: 15px;
@@ -140,40 +136,34 @@
 
 <body>
 
-  <!-- Background Music -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="love.mp3" type="audio/mpeg">
-  </audio>
-
   <!-- PAGE 1 -->
   <div class="card" id="page1">
-    <h1>Hey zainii 💕</h1>
+    <h1>Hieieiieie zainiiii 💕</h1>
     <p>I made something special just for you…</p>
-    <button class="btn" onclick="startLove()">Start 💌</button>
-    <button class="btn" onclick="playMusic()">🔊 Turn music on</button>
+    <button class="btn" onclick="nextPage(1)">Start 💌</button>
   </div>
 
   <!-- PAGE 2 -->
   <div class="card hidden" id="page2">
     <h1>Important Question 😼</h1>
     <p>Do you love cats?</p>
-    <button class="btn" onclick="nextPage(2)">YES 🐾</button>
+    <button class="btn" onclick="nextPage(2)">YES YES YES 🐾</button>
     <button class="btn" onclick="nextPage(2)">ABSOLUTELY YES 😻</button>
   </div>
 
   <!-- PAGE 3 -->
   <div class="card hidden" id="page3">
     <h1>Your Cuties 🐱</h1>
-    <p>Because your cats deserve their own page 💖</p>
+    <p>chotussssss 💖</p>
     <img src="cat1.jpg" alt="Cat 1">
-    <button class="btn" onclick="nextPage(3)">Aww 🥺</button>
+    <button class="btn" onclick="nextPage(3)">Awwwwwwww 🥺</button>
   </div>
 
   <!-- PAGE 4 -->
   <div class="card hidden" id="page4">
     <h1>One More 😻</h1>
     <img src="cat2.jpg" alt="Cat 2">
-    <button class="btn" onclick="nextPage(4)">Okay okay ❤️</button>
+    <button class="btn" onclick="nextPage(4)">hehehehehe ❤️</button>
   </div>
 
   <!-- FINAL PAGE -->
@@ -184,26 +174,13 @@
     <h2>Will you be my Valentine? 🌹</h2>
     <button class="btn" onclick="yesClicked()">YES 💖</button>
     <button class="btn no-btn" id="noBtn">No 🙈</button>
-    <footer>— Zaid Khan / Pretty Boy 😌</footer>
+    <footer>— Your Pretty Boy 😌</footer>
   </div>
 
   <script>
-    /* Navigation */
-    function startLove() {
-      playMusic();
-      nextPage(1);
-    }
-
     function nextPage(current) {
       document.getElementById('page' + current).classList.add('hidden');
       document.getElementById('page' + (current + 1)).classList.remove('hidden');
-    }
-
-    /* Music */
-    function playMusic() {
-      const music = document.getElementById('bgMusic');
-      music.volume = 0.6;
-      music.play();
     }
 
     /* Floating hearts */
@@ -245,7 +222,8 @@
         <footer>— Forever yours, Zaid 😌</footer>
       `;
 
-      const text = "I don’t know when it happened, but somewhere between your smile, your laugh, and the way you love your cats, my heart quietly chose you. I promise to choose you every day — in the little moments, the hard days, and all the love in between. 💕🐾";
+      const text =
+        "I don’t know when my heart decided, but somewhere between your smile and your laugh, it found its home in you. I promise to choose you every day — through the little moments, the hard days, and all the love we’ll share in between, Zainuu. You are my most beautiful baby, always. 💕"
       typeWriter(text, document.getElementById('loveLetter'));
     }
 
