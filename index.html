@@ -8,6 +8,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
+    .no-message {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #e63946;
+  font-family: 'Poppins', sans-serif;
+  opacity: 0;
+  animation: popFade 1s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes popFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}
+
    body {
   margin: 0;
   font-family:
@@ -158,7 +186,23 @@
   </div>
 
   <script>
-    const noBtn = document.getElementById('noBtn');
+   function moveNoButton() {
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 300 - 150;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+  // Create "nice try 😼" message
+  const msg = document.createElement('div');
+  msg.className = 'no-message';
+  msg.textContent = 'nice try 😼';
+
+  noBtn.appendChild(msg);
+
+  setTimeout(() => {
+    msg.remove();
+  }, 1000);
+}
+
 
    function startLove() {
   const music = document.getElementById('bgMusic');
