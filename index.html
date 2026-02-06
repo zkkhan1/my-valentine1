@@ -4,63 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Will You Be My Valentine? 💖</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; }
-    .no-message {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 14px;
-  color: #e63946;
-  font-family: 'Poppins', sans-serif;
-  opacity: 0;
-  animation: popFade 1s ease forwards;
-  pointer-events: none;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-@keyframes popFade {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 10px);
-  }
-  30% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -10px);
-  }
-}
-
-   body {
-  margin: 0;
-  font-family:
-    'Poppins',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  min-height: 100vh;
-  padding: 20px;
-  text-align: center;
-  overflow-y: auto;
-}
+    body {
+      margin: 0;
+      font-family:
+        'Poppins',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+      overflow-y: auto;
+    }
 
     .card {
       background: white;
-      border-radius: 20px;
-      padding: 25px;
       max-width: 420px;
       width: 100%;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      animation: fadeIn 0.6s ease;
+      animation: fadeIn 0.5s ease;
       position: relative;
       z-index: 2;
     }
@@ -70,15 +48,16 @@
       color: #e63946;
     }
 
-   p {
-  color: #444;
-  line-height: 1.8;
-  font-size: 16px;
-  font-family: 'Playfair Display', serif;
-}
+    p {
+      font-family: 'Playfair Display', serif;
+      color: #444;
+      font-size: 16px;
+      line-height: 1.8;
+    }
 
     .btn {
       display: block;
+      width: 80%;
       margin: 12px auto;
       padding: 12px 20px;
       border: none;
@@ -87,9 +66,7 @@
       color: white;
       font-size: 16px;
       cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-      width: 80%;
-      position: relative;
+      transition: transform 0.15s ease, background 0.15s ease;
     }
 
     .btn:hover {
@@ -97,11 +74,12 @@
       transform: scale(1.05);
     }
 
-   .no-btn {
-  background: #999;
-  transition: transform 0.15s ease-out;
-  touch-action: manipulation;
-}
+    .no-btn {
+      background: #999;
+      transition: transform 0.15s ease-out;
+      position: relative;
+      touch-action: manipulation;
+    }
 
     img {
       max-width: 100%;
@@ -109,7 +87,9 @@
       margin-top: 15px;
     }
 
-    .hidden { display: none; }
+    .hidden {
+      display: none;
+    }
 
     footer {
       margin-top: 15px;
@@ -117,38 +97,60 @@
       color: #888;
     }
 
-    /* Hearts */
+    /* Floating hearts */
     .heart {
-      position: absolute;
+      position: fixed;
+      bottom: -10px;
       color: #ff4d6d;
-      font-size: 20px;
+      opacity: 0.8;
       animation: floatUp 4s linear infinite;
-      opacity: 0.7;
+      z-index: 1;
     }
 
     @keyframes floatUp {
       from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-100vh); opacity: 0; }
+      to { transform: translateY(-110vh); opacity: 0; }
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* No-button message */
+    .no-message {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #e63946;
+      opacity: 0;
+      animation: popFade 1s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes popFade {
+      0% { opacity: 0; transform: translate(-50%, 10px); }
+      30% { opacity: 1; transform: translate(-50%, 0); }
+      100% { opacity: 0; transform: translate(-50%, -10px); }
+    }
   </style>
 </head>
+
 <body>
 
-  <!-- BACKGROUND MUSIC -->
- <audio id="bgMusic" loop preload="auto">
-  <source src="love.mp3" type="audio/mpeg">
-</audio>
+  <!-- Background Music -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- PAGE 1 -->
   <div class="card" id="page1">
     <h1>Hey zainii 💕</h1>
     <p>I made something special just for you…</p>
     <button class="btn" onclick="startLove()">Start 💌</button>
+    <button class="btn" onclick="playMusic()">🔊 Turn music on</button>
   </div>
 
   <!-- PAGE 2 -->
@@ -176,7 +178,7 @@
 
   <!-- FINAL PAGE -->
   <div class="card hidden" id="page5">
-    <h1>my love Zainuuu💘</h1>
+    <h1>my love Zainuuu 💘</h1>
     <p>From laughing at little things to loving your cats like my own…</p>
     <p>You mean more to me than I can explain.</p>
     <h2>Will you be my Valentine? 🌹</h2>
@@ -186,55 +188,25 @@
   </div>
 
   <script>
-   function moveNoButton() {
-  const x = Math.random() * 300 - 150;
-  const y = Math.random() * 300 - 150;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-
-  // Create "nice try 😼" message
-  const msg = document.createElement('div');
-  msg.className = 'no-message';
-  msg.textContent = 'nice try 😼';
-
-  noBtn.appendChild(msg);
-
-  setTimeout(() => {
-    msg.remove();
-  }, 1000);
-}
-
-
-   function startLove() {
-  const music = document.getElementById('bgMusic');
-  music.volume = 0.6;
-  music.play().catch(() => {
-    console.log("Music will play after interaction");
-  });
-  nextPage(1);
-}
+    /* Navigation */
+    function startLove() {
+      playMusic();
+      nextPage(1);
+    }
 
     function nextPage(current) {
       document.getElementById('page' + current).classList.add('hidden');
       document.getElementById('page' + (current + 1)).classList.remove('hidden');
     }
 
-    // No button runs away
-   const noBtn = document.getElementById('noBtn');
-    function moveNoButton() {
-  const x = Math.random() * 300 - 150;
-  const y = Math.random() * 300 - 150;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-}
+    /* Music */
+    function playMusic() {
+      const music = document.getElementById('bgMusic');
+      music.volume = 0.6;
+      music.play();
+    }
 
-/* Desktop */
-  noBtn.addEventListener('mouseenter', moveNoButton);
-
-/* Mobile */
-  noBtn.addEventListener('touchstart', moveNoButton);
-
-
-
-    // Hearts generator
+    /* Floating hearts */
     setInterval(() => {
       const heart = document.createElement('div');
       heart.className = 'heart';
@@ -244,6 +216,38 @@
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 4000);
     }, 300);
+
+    /* No button behavior */
+    const noBtn = document.getElementById('noBtn');
+
+    function moveNoButton() {
+      const x = Math.random() * 300 - 150;
+      const y = Math.random() * 300 - 150;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+      const msg = document.createElement('div');
+      msg.className = 'no-message';
+      msg.textContent = 'nice try 😼';
+      noBtn.appendChild(msg);
+
+      setTimeout(() => msg.remove(), 1000);
+    }
+
+    noBtn.addEventListener('mouseenter', moveNoButton);
+    noBtn.addEventListener('touchstart', moveNoButton);
+
+    /* YES action */
+    function yesClicked() {
+      document.getElementById('page5').innerHTML = `
+        <h1>YAY 🥹💖</h1>
+        <p id="loveLetter"></p>
+        <h2>Happy Valentine’s Day ❤️</h2>
+        <footer>— Forever yours, Zaid 😌</footer>
+      `;
+
+      const text = "I don’t know when it happened, but somewhere between your smile, your laugh, and the way you love your cats, my heart quietly chose you. I promise to choose you every day — in the little moments, the hard days, and all the love in between. 💕🐾";
+      typeWriter(text, document.getElementById('loveLetter'));
+    }
 
     function typeWriter(text, element, speed = 40) {
       element.innerHTML = "";
@@ -257,46 +261,7 @@
         }
       }, speed);
     }
-
-    function confettiBlast() {
-      for (let i = 0; i < 120; i++) {
-        const conf = document.createElement('div');
-        conf.style.position = 'fixed';
-        conf.style.width = '8px';
-        conf.style.height = '8px';
-        conf.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
-        conf.style.left = Math.random() * 100 + 'vw';
-        conf.style.top = '-10px';
-        conf.style.opacity = 0.9;
-        conf.style.borderRadius = '50%';
-        conf.style.zIndex = 9999;
-        document.body.appendChild(conf);
-
-        const fall = conf.animate([
-          { transform: 'translateY(0)' },
-          { transform: `translateY(${window.innerHeight + 100}px)` }
-        ], {
-          duration: Math.random() * 2000 + 2000,
-          easing: 'ease-out'
-        });
-
-        fall.onfinish = () => conf.remove();
-      }
-    }
-
-    function yesClicked() {
-      confettiBlast();
-      document.getElementById('page5').innerHTML = `
-        <h1>YAY 🥹💖</h1>
-        <p id="loveLetter" style="font-size:16px; line-height:1.6;"></p>
-        <h2 style="margin-top:15px;">Happy Valentine’s Day ❤️</h2>
-        <footer>— Forever yours, Zaid 😌</footer>
-      `;
-
-      const letterText = "I don’t know when it happened, but somewhere between your smile, your laugh, and the way you love your cats, my heart quietly chose you. I promise to choose you every day — in the little moments, the hard days, and all the love in between. 💕🐾";
-      const target = document.getElementById('loveLetter');
-      typeWriter(letterText, target);
-    }
   </script>
+
 </body>
 </html>
