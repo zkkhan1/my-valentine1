@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine? 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      animation: fadeIn 0.6s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1, h2 {
+      font-family: 'Pacifico', cursive;
+      color: #e63946;
+    }
+
+    p { color: #444; }
+
+    .btn {
+      display: block;
+      margin: 12px auto;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      background: #e63946;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      width: 80%;
+      position: relative;
+    }
+
+    .btn:hover {
+      background: #d62828;
+      transform: scale(1.05);
+    }
+
+    .no-btn {
+      background: #999;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 15px;
+    }
+
+    .hidden { display: none; }
+
+    footer {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* Hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: floatUp 4s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop>
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- PAGE 1 -->
+  <div class="card" id="page1">
+    <h1>Hey {{zainii}} 💕</h1>
+    <p>I made something special just for you…</p>
+    <button class="btn" onclick="startLove()">Start 💌</button>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="card hidden" id="page2">
+    <h1>Important Question 😼</h1>
+    <p>Do you love cats?</p>
+    <button class="btn" onclick="nextPage(2)">YES 🐾</button>
+    <button class="btn" onclick="nextPage(2)">ABSOLUTELY YES 😻</button>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="card hidden" id="page3">
+    <h1>Your Cuties 🐱</h1>
+    <p>Because your cats deserve their own page 💖</p>
+    <img src="cat1.jpg" alt="Cat 1">
+    <button class="btn" onclick="nextPage(3)">Aww 🥺</button>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="card hidden" id="page4">
+    <h1>One More 😻</h1>
+    <img src="cat2.jpg" alt="Cat 2">
+    <button class="btn" onclick="nextPage(4)">Okay okay ❤️</button>
+  </div>
+
+  <!-- FINAL PAGE -->
+  <div class="card hidden" id="page5">
+    <h1>{{HER_NAME}} 💘</h1>
+    <p>From laughing at little things to loving your cats like my own…</p>
+    <p>You mean more to me than I can explain.</p>
+    <h2>Will you be my Valentine? 🌹</h2>
+    <button class="btn" onclick="yesClicked()">YES 💖</button>
+    <button class="btn no-btn" id="noBtn">No 🙈</button>
+    <footer>— Zaid Khan / Pretty Boy 😌</footer>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+
+    function startLove() {
+      document.getElementById('bgMusic').play();
+      nextPage(1);
+    }
+
+    function nextPage(current) {
+      document.getElementById('page' + current).classList.add('hidden');
+      document.getElementById('page' + (current + 1)).classList.remove('hidden');
+    }
+
+    // No button runs away
+    document.addEventListener('mouseover', function(e) {
+      if (e.target && e.target.id === 'noBtn') {
+        const x = Math.random() * 200 - 100;
+        const y = Math.random() * 200 - 100;
+        e.target.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    });
+
+    // Hearts generator
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 300);
+
+    function typeWriter(text, element, speed = 40) {
+      element.innerHTML = "";
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(interval);
+        }
+      }, speed);
+    }
+
+    function confettiBlast() {
+      for (let i = 0; i < 120; i++) {
+        const conf = document.createElement('div');
+        conf.style.position = 'fixed';
+        conf.style.width = '8px';
+        conf.style.height = '8px';
+        conf.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        conf.style.left = Math.random() * 100 + 'vw';
+        conf.style.top = '-10px';
+        conf.style.opacity = 0.9;
+        conf.style.borderRadius = '50%';
+        conf.style.zIndex = 9999;
+        document.body.appendChild(conf);
+
+        const fall = conf.animate([
+          { transform: 'translateY(0)' },
+          { transform: `translateY(${window.innerHeight + 100}px)` }
+        ], {
+          duration: Math.random() * 2000 + 2000,
+          easing: 'ease-out'
+        });
+
+        fall.onfinish = () => conf.remove();
+      }
+    }
+
+    function yesClicked() {
+      confettiBlast();
+      document.getElementById('page5').innerHTML = `
+        <h1>YAY 🥹💖</h1>
+        <p id="loveLetter" style="font-size:16px; line-height:1.6;"></p>
+        <h2 style="margin-top:15px;">Happy Valentine’s Day ❤️</h2>
+        <footer>— Forever yours, Zaid 😌</footer>
+      `;
+
+      const letterText = "I don’t know when it happened, but somewhere between your smile, your laugh, and the way you love your cats, my heart quietly chose you. I promise to choose you every day — in the little moments, the hard days, and all the love in between. 💕🐾";
+      const target = document.getElementById('loveLetter');
+      typeWriter(letterText, target);
+    }
+  </script>
+
+</body>
+</html>
